@@ -2,6 +2,7 @@ package tonkincode.blink;
 
 import java.awt.FlowLayout;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
@@ -10,7 +11,9 @@ public class Options extends JFrame{
 	private int locationX = 0;
 	private int locationY = 0;
 	private int timeGap[] = {300, 600, 900, 1200}; //sorts the time user wants to take a gap in order of minutes: 5, 10, 15, 20.
+	
 	private JComboBox<Integer> selectGap = new JComboBox<Integer>();
+	private JButton locationButton = new JButton("Set Location");
 	private FlowLayout layout = new FlowLayout();
 	
 	/*Function: Options
@@ -45,12 +48,12 @@ public class Options extends JFrame{
 		selectGap.setSize(this.getWidth()/2, this.getHeight()/10);
 	}
 	
-	/*Function: dragLocation
+	/*Function: location
 	*Description: drag the notification box to where you want it to start next time
 	*Parameters: None.
 	*Warnings: None.
 	*/
-	private void dragLocation(){
+	private void selectLocation(){
 		
 	}
 }
