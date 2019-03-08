@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 
 public class Popup extends JFrame{
 
-	private int locX;
-	private int locY;
+	private int locX = 0; //default is set to 0 in order to prevent crashes.
+	private int locY = 0;
 
 	/*
 	 * Function: Popup
@@ -23,6 +23,7 @@ public class Popup extends JFrame{
 		setSize(400,200);
 		setUndecorated(true);
 		setOpacity(0.7F);
+		setLocation(locX, locY);
 		setVisible(true);
 	}
 
