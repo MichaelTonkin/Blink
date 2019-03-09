@@ -21,7 +21,7 @@ public class Popup extends JFrame{
 	private int locY = 0;
 	private Point location;
 	private ReadData openLocation;
-	private String stringLocation;
+	private String[] stringLocation;
 	
 	/*
 	 * Function: Popup
@@ -46,8 +46,7 @@ public class Popup extends JFrame{
 			System.out.println("error reading from location")
 		}
 		
-		stringLocation = openLocation.getOutput();
-		String[] stringLocation = openLocation.getOutput().split(',');
+		for(stringLocation: openLocation.getOutput().split(','));
 
 		location = new Point(Integer.parseInt(stringLocation[0]), Integer.parseInt(stringLocation[1]));
 		return location;
