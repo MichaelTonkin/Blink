@@ -7,6 +7,8 @@
 
 package tonkincode.blink;
 
+import java.awt.Point;
+
 import javax.swing.JFrame;
 
 public class Popup extends JFrame{
@@ -27,19 +29,6 @@ public class Popup extends JFrame{
 		setOpacity(0.7F);
 		setLocation(locX, locY);
 		setVisible(true);
-	}
-
-	/*
-	 * Function: setLocXY
-	 * Description: Taking input from the button in the options class (set location), this will then set the 
-	 * default location for the popup whenever it appears
-	 * Parameters: int x, int y - the x and y coordinates
-	 * Warnings: This will need to be improved to read the location from a save file in the release edition
-	 * as currently you will have to set up a the location each time you run the app. 
-	 */
-	public void setLocXY(int x, int y) {
-		locX = x;
-		locY = y;
 	}
 	
 }
