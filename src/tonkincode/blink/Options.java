@@ -1,8 +1,10 @@
 package tonkincode.blink;
 
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Component;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ public class Options extends JFrame{
 	private JComboBox<Integer> selectGap = new JComboBox<Integer>();
 	private JButton locationButton = new JButton("Set Location");
 	private FlowLayout layout = new FlowLayout();
+	private Point windowLocation;
 	
 	/*Function: Options
 	*Description: sets up the window
@@ -64,13 +67,14 @@ public class Options extends JFrame{
 	*/
 	private void selectLocation(){
 		
+		
 	locationButton.addActionListener(new ActionListener() {
 			
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			locationGrabber();
 			try {
-				WriteData writeLoca = new WriteData("location", "test");
+				WriteData writeLoca = new WriteData("location", windowLocation.toString());
 			} catch (IOException e1) {
 				e1.printStackTrace();
 				System.out.println("error writing to file in selectLocation");
@@ -78,5 +82,11 @@ public class Options extends JFrame{
 	}
 	}
 	);
+
 	}
+	
+	private void locationGrabber() {
+		windowLocation = this.getLocationOnScreen();
+	}
+	
 }
