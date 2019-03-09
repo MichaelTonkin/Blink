@@ -1,3 +1,10 @@
+/*Author: Michael Tonkin
+ * Created: 06/02/19
+ * Revised: 09/02/19
+ * Description: Set up the options window and all its componenets
+ * User advice: None.
+ */
+
 package tonkincode.blink;
 
 import java.awt.FlowLayout;
