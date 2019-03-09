@@ -1,10 +1,14 @@
 package tonkincode.blink;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import tonkincode.blink.utilities.WriteData;
 
 public class Options extends JFrame{
 
@@ -28,8 +32,13 @@ public class Options extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //temporary. will minimize to tray later.
 		setLayout(layout);
 		
+		//add time selection
 		selectGapTime();
 		add(selectGap);
+		
+		//add location setting button
+		selectLocation();
+		add(locationButton);
 		
 		pack();
 		setVisible(true);
@@ -55,5 +64,19 @@ public class Options extends JFrame{
 	*/
 	private void selectLocation(){
 		
+	locationButton.addActionListener(new ActionListener() {
+			
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				WriteData writeLoca = new WriteData("location", "test");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				System.out.println("error writing to file in selectLocation");
+			}
+	}
+	}
+	);
 	}
 }
