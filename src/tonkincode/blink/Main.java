@@ -12,8 +12,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Options options = new Options();
-		//Popup pop = new Popup();
+		//Options options = new Options();
+		Popup pop = new Popup();
 	}
 
 }

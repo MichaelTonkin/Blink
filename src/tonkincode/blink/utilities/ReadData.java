@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class ReadData {
 	
 	private String output;
-	
+	private int[] numOutputs;
 	/*
 	 * Function: ReadData
 	 * Description: uses a scanner to read data from file
@@ -26,12 +26,14 @@ public class ReadData {
 	Path path = Paths.get(dataFile);
 	
 	Scanner scanner = new Scanner(path);
-
+	int i = 0;
 	//read the data
 	while(scanner.hasNext()){
 	    //process each character
 	    String output = scanner.next();
+	    numOutput[i] = scanner.nextInt();
 	    System.out.println(output);
+	    i++;
 	}
 	scanner.close();
 }

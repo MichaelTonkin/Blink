@@ -24,6 +24,27 @@ public class Popup extends JFrame{
 	private String[] stringLocation;
 	
 	/*
+	 * Function: locationSet
+	 * Description: reads the location popup should be at from .txt file and stores in a point. 
+	 * Parameters: None
+	 * Warnings: None
+	 */
+	private Point locationSet() {
+		try {
+			openLocation = new ReadData("location.txt"); //open the file containing the coordinates we need to use
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("error reading from location");
+		}
+				
+		for(int i = 0; i <= openLocation.toString().length(); i++)
+		{
+		stringLocation[i] = openLocation.getOutput();	
+	}
+		location = new Point(Integer.parseInt(stringLocation[0]), Integer.parseInt(stringLocation[1]));
+		return location;
+	}
+	/*
 	 * Function: Popup
 	 * Description: used to set up the specs for the actual popup box
 	 * Parameters: None
@@ -37,20 +58,7 @@ public class Popup extends JFrame{
 		setLocation(locationSet());
 		setVisible(true);
 	}
-	
-	private Point locationSet() {
-		try {
-			openLocation = new ReadData("location.txt");
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("error reading from location")
-		}
-		
-		for(stringLocation: openLocation.getOutput().split(','));
 
-		location = new Point(Integer.parseInt(stringLocation[0]), Integer.parseInt(stringLocation[1]));
-		return location;
-	}
 	
 	
 	
