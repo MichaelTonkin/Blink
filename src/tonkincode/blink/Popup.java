@@ -10,6 +10,9 @@ package tonkincode.blink;
 
 import java.awt.Point;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -21,7 +24,9 @@ public class Popup extends JFrame{
 	private int locY = 0;
 	private Point location;
 	private ReadData openLocation;
-	private String[] stringLocation;
+	private String[] stringLocation = new String[1];
+	private String output;
+	private int[] numOutputs = new int[2];
 	
 	/*
 	 * Function: locationSet
@@ -29,33 +34,43 @@ public class Popup extends JFrame{
 	 * Parameters: None
 	 * Warnings: None
 	 */
-	private Point locationSet() {
-		try {
-			openLocation = new ReadData("location.txt"); //open the file containing the coordinates we need to use
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("error reading from location");
+	private void locationSet() throws IOException {
+		Path path = Paths.get("location.txt");
+		
+		Scanner scanner = new Scanner(path);
+		int i = 0;
+		//read the data
+		while(scanner.hasNext()){
+		    //process each character
+		    output = scanner.next();
+		    
+		    
+		    System.out.println(output);
+		    i++;
 		}
-				
-		for(int i = 0; i <= openLocation.toString().length(); i++)
-		{
-		stringLocation[i] = openLocation.getOutput();	
+		scanner.close();
+		
+		String clean = output.replaceAll("\\D+","");
+	    System.out.println(clean);
+	    
+		numOutputs[0] = Integer.parseInt(clean.substring(0, 2));
+		numOutputs[1] = Integer.parseInt(clean.substring(2));
 	}
-		location = new Point(Integer.parseInt(stringLocation[0]), Integer.parseInt(stringLocation[1]));
-		return location;
-	}
+	
 	/*
 	 * Function: Popup
 	 * Description: used to set up the specs for the actual popup box
 	 * Parameters: None
 	 * Warnings: None
 	 */
-	public Popup() {
+	public Popup() throws IOException {
+		
+		locationSet();
 		
 		setSize(400,200);
 		setUndecorated(true);
 		setOpacity(0.7F);
-		setLocation(locationSet());
+		setLocation(numOutputs[0], numOutputs[1]);
 		setVisible(true);
 	}
 

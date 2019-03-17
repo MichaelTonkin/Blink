@@ -8,12 +8,18 @@
 
 package tonkincode.blink;
 
+import java.io.IOException;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
 		//Options options = new Options();
-		Popup pop = new Popup();
+		try {
+			Popup pop = new Popup();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

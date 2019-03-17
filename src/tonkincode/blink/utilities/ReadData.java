@@ -28,10 +28,10 @@ public class ReadData {
 	Scanner scanner = new Scanner(path);
 	int i = 0;
 	//read the data
-	while(scanner.hasNext()){
+	while(scanner.hasNextInt()){
 	    //process each character
-	    String output = scanner.next();
-	    numOutput[i] = scanner.nextInt();
+	   // String output = scanner.next();
+	    numOutputs[i] = scanner.nextInt();
 	    System.out.println(output);
 	    i++;
 	}
