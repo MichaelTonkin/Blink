@@ -53,8 +53,9 @@ public class Popup extends JFrame{
 		String clean = output.replaceAll("\\D+","");
 	    System.out.println(clean);
 	    
-		numOutputs[0] = Integer.parseInt(clean.substring(0, 2));
+		numOutputs[0] = Integer.parseInt(clean.substring(0, 3));
 		numOutputs[1] = Integer.parseInt(clean.substring(2));
+	    System.out.println(numOutputs[0] + " " + numOutputs[1]);
 	}
 	
 	/*
