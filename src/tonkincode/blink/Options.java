@@ -17,6 +17,8 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import tonkincode.blink.utilities.WriteData;
 
 public class Options extends JFrame{
@@ -24,11 +26,21 @@ public class Options extends JFrame{
 	private int locationX = 0;
 	private int locationY = 0;
 	private int timeGap[] = {300, 600, 900, 1200}; //sorts the time user wants to take a gap in order of minutes: 5, 10, 15, 20.
+	private int width = 300; 
+	private int height = 200;
 	
 	private JComboBox<Integer> selectGap = new JComboBox<Integer>();
 	private JButton locationButton = new JButton("Set Location");
 	private FlowLayout layout = new FlowLayout();
 	private Point windowLocation;
+	private JPanel panel = new JPanel();
+	
+	private void optionsLayout(){
+		panel.add(selectGap);
+		panel.add(locationButton);
+		panel.setSize(width, height);
+		panel.setLayout(layout);
+	}
 	
 	/*Function: Options
 	*Description: sets up the window
@@ -37,25 +49,27 @@ public class Options extends JFrame{
 	*/
 	public Options()
 	{	
-		setSize(400, 800); //TODO fix sizing error
+		setTitle("Blink - options");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //temporary. will minimize to tray later.
-		setLayout(layout);
+		
 		
 		//add time selection
 		selectGapTime();
-		add(selectGap);
 		
 		//add location setting button
 		selectLocation();
-		add(locationButton);
 		
+		optionsLayout();
+		
+		add(panel);
 		pack();
+		setSize(width, height); 
 		setVisible(true);
 	}
 	
 	/*Function: selectGapTime
-	*Description: organise the combobox for the time gap
+	*Description: organise the combobox for the time gap in between breaks
 	*Parameters: None.
 	*Warnings: None.
 	*/
@@ -82,6 +96,7 @@ public class Options extends JFrame{
 			locationGrabber();
 			try {
 				WriteData writeLoca = new WriteData("location", windowLocation.toString());
+				Popup pop = new Popup();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 				System.out.println("error writing to file in selectLocation");

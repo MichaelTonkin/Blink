@@ -16,11 +16,7 @@ public class Main {
 		
 		Options options = new Options();
 		
-		try {
-			Popup pop = new Popup();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 	}
 
 }
