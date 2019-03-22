@@ -96,7 +96,6 @@ public class Options extends JFrame{
 			locationGrabber();
 			try {
 				WriteData writeLoca = new WriteData("location", windowLocation.toString());
-				Popup pop = new Popup();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 				System.out.println("error writing to file in selectLocation");

@@ -10,12 +10,14 @@ package tonkincode.blink;
 
 import java.io.IOException;
 
+import tonkincode.blink.utilities.PopupTimer;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
 		Options options = new Options();
-		
+		PopupTimer popTimer = new PopupTimer();
 
 	}
 

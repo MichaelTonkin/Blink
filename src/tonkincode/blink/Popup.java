@@ -20,8 +20,6 @@ import tonkincode.blink.utilities.ReadData;
 
 public class Popup extends JFrame{
 
-	private int locX = 0; //default is set to 0 in order to prevent crashes.
-	private int locY = 0;
 	private Point location;
 	private ReadData openLocation;
 	private String[] stringLocation = new String[1];
