@@ -11,7 +11,7 @@ public class PopupTimer extends TimerTask{
 
 	Timer timer = new Timer();
 	public PopupTimer(){
-		timer.scheduleAtFixedRate(this, 500, 1000);
+		timer.scheduleAtFixedRate(this, 0, 300000);//currently set to spawn in every 5 minutes
 	}
 	
 	@Override
