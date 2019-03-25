@@ -10,7 +10,9 @@ package tonkincode.blink;
 
 import java.io.IOException;
 
+import tonkincode.blink.utilities.PopupSustain;
 import tonkincode.blink.utilities.PopupTimer;
+import tonkincode.blink.utilities.ReadData;
 
 public class Main {
 
@@ -18,7 +20,12 @@ public class Main {
 		
 		Options options = new Options();
 		PopupTimer popTimer = new PopupTimer();
-
+		try {
+			ReadData read = new ReadData();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//PopupSustain popSustain = new PopupSustain();
 	}
 
 }

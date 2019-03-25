@@ -10,7 +10,7 @@ public class PopUI extends Canvas{
 	public void paint(Graphics g)
 	{
 		g.setColor(Color.white);
-		g.drawString("It's time to give your eyes a break", PopMeasurements.pWidth/2, PopMeasurements.pHeight/2);
+		g.drawString("It's time to give your eyes a break", PopMeasurements.pWidth/4, PopMeasurements.pHeight/2);
 	}
 	
 }
