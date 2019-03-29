@@ -18,18 +18,21 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import tonkincode.blink.utilities.WriteData;
 
 public class Options extends JFrame{
 
-	private int locationX = 0;
-	private int locationY = 0;
-	private int timeGap[] = {300, 600, 900, 1200}; //sorts the time user wants to take a gap in order of minutes: 5, 10, 15, 20.
+	private static int timeGap = 300000; //used in PopupTimer to set how long between popup appearance. Default 5 minutes.
+	private String timeGapString[] = {"5 Minutes", "10 Minutes", "15 Minutes"}; //sorts the time user wants to take a gap in order of minutes: 5, 10, 15.
+	private String getSelection;
 	private int width = 300; 
 	private int height = 200;
 	
-	private JComboBox<Integer> selectGap = new JComboBox<Integer>();
+	private JComboBox<String> selectGap = new JComboBox<String>();
 	private JButton locationButton = new JButton("Set Location");
 	private FlowLayout layout = new FlowLayout();
 	private Point windowLocation;
@@ -52,8 +55,7 @@ public class Options extends JFrame{
 		setTitle("Blink - options");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //temporary. will minimize to tray later.
-		
-		
+
 		//add time selection
 		selectGapTime();
 		
@@ -66,19 +68,56 @@ public class Options extends JFrame{
 		pack();
 		setSize(width, height); 
 		setVisible(true);
+		setOptionsDecoration();
+	}
+	
+	/*Function: setOptionsDecoration
+	*Description: Used to detect which operating system the program is installed on, and change the application appearance accordingly.
+	*Parameters: None.
+	*Warnings: Currently only works for Windows 10. Currently not working
+	*/
+	private void setOptionsDecoration()
+	{
+		if(System.getProperty("os.name") == "Windows 10")
+		{
+			try {
+				UIManager.setLookAndFeel((LookAndFeel) Class.forName(UIManager.getCrossPlatformLookAndFeelClassName()).newInstance());
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/*Function: selectGapTime
 	*Description: organise the combobox for the time gap in between breaks
 	*Parameters: None.
-	*Warnings: None.
+	*Warnings: timeGap[0] is currently set to 3 seconds for testing purposes.
 	*/
 	private void selectGapTime(){
-		selectGap.addItem(timeGap[0]);
-		selectGap.addItem(timeGap[1]);
-		selectGap.addItem(timeGap[2]);
-		selectGap.addItem(timeGap[3]);
+		//add items to dropdown menu
+		selectGap.addItem(timeGapString[0]);
+		selectGap.addItem(timeGapString[1]);
+		selectGap.addItem(timeGapString[2]);
+		
 		selectGap.setSize(this.getWidth()/2, this.getHeight()/10);
+		
+		//set string equal to selection
+		String getSelection = (String) selectGap.getSelectedItem();
+		
+		//use the selection to get a time for the popupTimer class (in ms)
+		if(getSelection == timeGapString[0]) {timeGap = 3000; System.out.println("fetched timegap 0");} // five minutes
+		if(getSelection == timeGapString[1]) {timeGap = 600000; System.out.println("fetched timegap 1");} // ten minutes
+		if(getSelection == timeGapString[2]) {timeGap = 900000; System.out.println("fetched timegap 2");} // fifteen minutes
 	}
 	
 	/*Function: location
@@ -105,9 +144,13 @@ public class Options extends JFrame{
 	);
 
 	}
-	
 	private void locationGrabber() {
 		windowLocation = this.getLocationOnScreen();
+	}
+	
+	public static int getTimeGap()
+	{
+		return timeGap;
 	}
 	
 }

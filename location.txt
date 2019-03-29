@@ -1,1 +1,1 @@
-java.awt.Point[x=494,y=316]
+java.awt.Point[x=346,y=269]
