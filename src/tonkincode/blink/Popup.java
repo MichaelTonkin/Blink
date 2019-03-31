@@ -28,9 +28,6 @@ public class Popup extends JFrame{
 	private ReadData openLocation;
 	private String[] stringLocation = new String[1];
 	private JPanel ui = new JPanel();
-
-			
-
 	
 	/*
 	 * Function: Popup
